@@ -1,0 +1,26 @@
+class Solution(object):
+    def countStudents(self, students, sandwiches):
+        """
+        :type students: List[int]
+        :type sandwiches: List[int]
+        :rtype: int
+        """
+        sandwiches.reverse()
+        i=0
+        flag=0
+        while i<len(students) and sandwiches:
+            if students[i]==sandwiches[-1]:
+                students[i]='_'
+                sandwiches.pop()
+                flag=1
+            i=i+1
+            print("i=",i,"flag=",flag)
+            print(students,sandwiches)
+            if i==len(students) and flag==1:
+                i=0
+                flag=0
+        print(students,sandwiches)
+        return len(sandwiches)
+s=Solution()
+a=s.countStudents([1,1,0,0],[0,1,0,1])
+print(a)
